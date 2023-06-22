@@ -93,16 +93,35 @@ namespace Recte_Installer_New
                 await Task.Delay(5);
             }
         }
-
+        static void DeleteFoldersWithSubstring(string directory, string substring)
+        {
+            try
+            {
+                foreach (string folder in Directory.GetDirectories(directory))
+                {
+                    if (folder.Contains(substring))
+                    {
+                        Directory.Delete(folder, true);
+                        Console.WriteLine($"Deleted folder: {folder}");
+                    }
+                    else
+                    {
+                        DeleteFoldersWithSubstring(folder, substring);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
         async void Button1_Click_1(object sender, RoutedEventArgs e)
         {
             ChangeProgress("Detecting If Recte Already Exists", 10);
-
-            if (Directory.Exists("Recte"))
-            {
-                ChangeProgress("Deleting Directory", 20);
-                Directory.Delete("Recte " + version, true);
-            }
+            string currentDirectory = Directory.GetCurrentDirectory();
+            DeleteFoldersWithSubstring(currentDirectory, "Recte");
+            ChangeProgress("Deleting Directory", 20);
+               
 
             ChangeProgress("Starting Download", 25);
             ChangeProgress("Downloading...", 30);
