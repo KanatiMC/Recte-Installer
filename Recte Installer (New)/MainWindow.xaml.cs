@@ -98,7 +98,7 @@ namespace Recte_Installer_New
         {
             ChangeProgress("Detecting If Recte Already Exists", 10);
 
-            if (Directory.Exists("Recte " + version))
+            if (Directory.Exists("Recte"))
             {
                 ChangeProgress("Deleting Directory", 20);
                 Directory.Delete("Recte " + version, true);
