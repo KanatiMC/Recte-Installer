@@ -93,6 +93,7 @@ namespace Recte_Installer_New
                 await Task.Delay(5);
             }
         }
+        //Literally Writted By ChatGPT
         static void DeleteFoldersWithSubstring(string directory, string substring)
         {
             try
