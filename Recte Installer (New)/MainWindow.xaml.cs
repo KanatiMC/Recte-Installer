@@ -93,6 +93,7 @@ namespace Recte_Installer_New
                 await Task.Delay(5);
             }
         }
+
         //Literally Writted By ChatGPT
         static void DeleteFoldersWithSubstring(string directory, string substring)
         {
@@ -116,21 +117,21 @@ namespace Recte_Installer_New
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
+
         async void Button1_Click_1(object sender, RoutedEventArgs e)
         {
             ChangeProgress("Detecting If Recte Already Exists", 10);
             string currentDirectory = Directory.GetCurrentDirectory();
             DeleteFoldersWithSubstring(currentDirectory, "Recte");
             ChangeProgress("Deleting Directory", 20);
-               
 
             ChangeProgress("Starting Download", 25);
             ChangeProgress("Downloading...", 30);
             webClient.DownloadFileAsync(new Uri("https://recte.xyz/Recte.zip"), "Recte.zip");
-            
+
             while (webClient.IsBusy)
                 await Task.Delay(1000);
-            
+
             ChangeProgress("Extracting", 70);
             ExtractFile("Recte.zip", "Recte " + version);
             ChangeProgress("Extracted", 75);
