@@ -11,9 +11,6 @@
     <WindowChrome.WindowChrome>
         <WindowChrome GlassFrameThickness="0" CornerRadius="10" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
-    <Window.Resources>
-        <local:ProgressForegroundConverter x:Key="ProgressForegroundConverter"/>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
